@@ -1,0 +1,126 @@
+/*  BASE */
+html body * {
+    font-size: 0.98em;
+}
+
+hbox {
+    display: flex;
+    flex-direction: row;
+}
+
+vbox {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 0.2em;
+    padding: 0.3em 0.6em;
+}
+
+button[role="random"] {
+    background-color: #b8b6b1;
+    color: black;
+    border-color: #b8b6b1;
+}
+
+button[role="primary"] {
+    background-color: #e4a10f;
+    color: white;
+    border-color: #e4a10f;
+}
+
+button[role="secondary"] {
+    background-color: #0fcbe4;
+    color: white;
+    border-color: #0fcbe4;
+}
+
+button[role="danger"] {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+button[role="info"] {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.Block {
+    border: rgb(31, 187, 192) solid 3px;
+    padding: 20px;
+}
+.Block + .Block {
+    margin-left: 5em;
+}
+
+.OrderSummary {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SummaryInformation > label + label {
+    margin-left: 1em;
+}
+
+.ButtonAction > button + button {
+    margin-left: 1em;
+}
+
+.ButtonAction {
+    margin-left: 2em;
+}
+
+.ButtonNewInventory {
+    justify-content: flex-end;
+}
+
+.OrderInput > vbox + vbox {
+    margin-left: 1em;
+}
+
+.VerticalBoxInput > input {
+    margin-bottom: 1em;
+}
+
+.Block > hbox + hbox {
+    margin-bottom: 1em;
+}
+
+.LabelInformation > label {
+    margin-bottom: 1.25em;
+    margin-right: 1em;
+}
+
+.FruitInput > * {
+    margin-bottom: 1em;
+}
+
+.SummaryInformation {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.InventoryOrder {
+    width: 500px;
+}
+
+.NewIventory {
+    width: 500px;
+}
+
+.NewItem {
+    width: 300px;
+}
+.Blocks {
+    align-items: baseline;
+}
+.FruitPropertyContainer > select + select {
+    margin-top: 1em;
+}
+.FruitPropertyNameLabel > * {
+    margin-bottom: 1.2em;
+}

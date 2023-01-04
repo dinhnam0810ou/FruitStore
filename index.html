@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JS Example</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <hbox class="Blocks">
+        <vbox id="inventoryOrderBlock" class="Block">
+            <h3>Inventory Orders</h3>
+            <hbox class="OrderSummary">
+                <hbox id="summaryInformationOrder" class="SummaryInformation"></hbox>
+                <button id="buttonNewOrder" role="primary">New Order...</button>
+            </hbox>
+            <vbox id="inventoryOrderContainer" class="InventoryOrderContainer"></vbox>
+        </vbox>
+
+        <vbox id="newInventoryOrderBlock" class="Block">
+            <h3>New Inventory</h3>
+            <hbox class="OrderInput">
+                <vbox class="VerticalBoxInput">
+                    <label>Order Code:</label>
+                    <input id="orderCode" type="text" value="123AA">
+                    <label>Supplier:</label>
+                    <select name="supplier" id="supplier">
+                        <option value="volvo">Volvo</option>
+                    </select>
+                </vbox>
+                <vbox class="VerticalBoxInput">
+                    <label>Order date:</label>
+                    <input id="orderDate" type="date">
+                    <label>Note:</label>
+                    <input id="note" type="text">
+                </vbox>
+            </hbox>
+            <hbox class="OrderSummary">
+                <label>Items:</label>
+                <button id="buttonAdd" role="primary">Add Item...</button>
+            </hbox>
+            <vbox id="detailVBox"></vbox>
+            <hbox id="summaryInformation" class="SummaryInformation"></hbox>
+            <hbox class="ButtonAction ButtonNewInventory">
+                <button role="random">Cancel</button>
+                <button id="buttonSaveOrder" role="secondary">Save</button>
+            </hbox>
+        </vbox>
+
+        <vbox id="orderItemBlock" class="Block">
+            <h3>New Item</h3>
+            <hbox>
+                <vbox class="LabelInformation">
+                    <label>Fruit type:</label>
+                    <vbox id="fruitPropertyNameLabel" class="FruitPropertyNameLabel"></vbox>
+                    <label>Weight:</label>
+                    <label>Cost:</label>
+                </vbox>
+                <vbox class="FruitInput" id="fruitInput">
+                    <select name="fruitType" id="fruitType">
+                        <option value="Watermelon" selected>Watermelon</option>
+                        <option value="Kiwi">Kiwi</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Grape">Grape</option>
+                    </select>
+                    <vbox id="fruitPropertyContainer" class="FruitPropertyContainer"></vbox>
+                    <input id="weight" type="number" value="10"/>
+                    <input id="cost" type="number" value="10"/>
+                </vbox>
+            </hbox>
+            <hbox class="ButtonAction ButtonNewInventory">
+                <button role="random">Cancel</button>
+                <button role="secondary" id="buttonSaveItem">Save</button>
+            </hbox>
+        </vbox>
+    </hbox>
+</body>
+</html>
+<script src="Fruit.js"></script>
+<script src="Apple.js"></script>
+<script src="Grape.js"></script>
+<script src="Kiwi.js"></script>
+<script src="Watermelon.js"></script>
+<script src="App.js"></script>
+<script src="Order.js"></script>
+<script src="SummaryOrderView.js"></script>
+<script src="OrderItemView.js"></script>
+<script src="InventoryOrderView.js"></script>
+<script>
+   window.addEventListener("load", function () {
+        var app = new App();
+        app.run();
+       });
+</script>

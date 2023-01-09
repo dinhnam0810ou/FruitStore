@@ -115,12 +115,19 @@ button[role="info"] {
 .NewItem {
     width: 300px;
 }
+
 .Blocks {
     align-items: baseline;
 }
+
 .FruitPropertyContainer > select + select {
     margin-top: 1em;
 }
+
 .FruitPropertyNameLabel > * {
     margin-bottom: 1.2em;
+}
+
+#detailVBox > hbox + hbox {
+    margin-top: 1em;
 }

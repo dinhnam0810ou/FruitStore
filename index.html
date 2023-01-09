@@ -11,7 +11,7 @@
             <h3>Inventory Orders</h3>
             <hbox class="OrderSummary">
                 <hbox id="summaryInformationOrder" class="SummaryInformation"></hbox>
-                <button id="buttonNewOrder" role="primary">New Order...</button>
+                <button id="buttonInventoryOrder" role="primary">New Order...</button>
             </hbox>
             <vbox id="inventoryOrderContainer" class="InventoryOrderContainer"></vbox>
         </vbox>
@@ -19,13 +19,11 @@
         <vbox id="newInventoryOrderBlock" class="Block">
             <h3>New Inventory</h3>
             <hbox class="OrderInput">
-                <vbox class="VerticalBoxInput">
+                <vbox id="verticalBoxInput" class="VerticalBoxInput">
                     <label>Order Code:</label>
-                    <input id="orderCode" type="text" value="123AA">
+                    <input id="orderCode" type="text" readonly>
                     <label>Supplier:</label>
-                    <select name="supplier" id="supplier">
-                        <option value="volvo">Volvo</option>
-                    </select>
+                    <select name="supplier" id="supplierSelection"></select>
                 </vbox>
                 <vbox class="VerticalBoxInput">
                     <label>Order date:</label>
@@ -35,13 +33,13 @@
                 </vbox>
             </hbox>
             <hbox class="OrderSummary">
-                <label>Items:</label>
+                <label><b>Items:</b></label>
                 <button id="buttonAdd" role="primary">Add Item...</button>
             </hbox>
             <vbox id="detailVBox"></vbox>
             <hbox id="summaryInformation" class="SummaryInformation"></hbox>
             <hbox class="ButtonAction ButtonNewInventory">
-                <button role="random">Cancel</button>
+                <button id="buttonInventoryCancel" role="random">Cancel</button>
                 <button id="buttonSaveOrder" role="secondary">Save</button>
             </hbox>
         </vbox>
@@ -56,19 +54,14 @@
                     <label>Cost:</label>
                 </vbox>
                 <vbox class="FruitInput" id="fruitInput">
-                    <select name="fruitType" id="fruitType">
-                        <option value="Watermelon" selected>Watermelon</option>
-                        <option value="Kiwi">Kiwi</option>
-                        <option value="Apple">Apple</option>
-                        <option value="Grape">Grape</option>
-                    </select>
+                    <select name="fruitType" id="fruitType"></select>
                     <vbox id="fruitPropertyContainer" class="FruitPropertyContainer"></vbox>
-                    <input id="weight" type="number" value="10"/>
-                    <input id="cost" type="number" value="10"/>
+                    <input id="weight" type="number" value="1"/>
+                    <input id="cost" type="number" value="1"/>
                 </vbox>
             </hbox>
             <hbox class="ButtonAction ButtonNewInventory">
-                <button role="random">Cancel</button>
+                <button id="buttonItemCancel" role="random">Cancel</button>
                 <button role="secondary" id="buttonSaveItem">Save</button>
             </hbox>
         </vbox>

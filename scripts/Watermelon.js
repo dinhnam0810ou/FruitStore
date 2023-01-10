@@ -27,6 +27,8 @@ Watermelon.prototype.renderProperties = function (labelPropertyNode, containerNo
         thiz.shapeSelection.appendChild(option);
     });
 
+    if (this.shape) this.shapeSelection.value = this.shape;
+
     containerNode.appendChild(this.shapeSelection);
 
     Watermelon.COLOR_TYPES.forEach(function (colorType) {
@@ -35,6 +37,8 @@ Watermelon.prototype.renderProperties = function (labelPropertyNode, containerNo
         option.text = colorType;
         thiz.colorSelection.appendChild(option);
     });
+
+    if (this.freshColor) this.colorSelection.value = this.freshColor;
 
     containerNode.appendChild(this.colorSelection);
 
@@ -55,7 +59,7 @@ Watermelon.prototype.getFruitValue = function (id) {
     var color = document.getElementById("colorSelection").value;
     var shape = document.getElementById("shapeSelection").value;
     
-    return new Watermelon(id,weight, cost, shape, color);
+    return new Watermelon(id, weight, cost, shape, color);
 };
 
 Watermelon.prototype.renderOrderItem = function (containerNode, id) {

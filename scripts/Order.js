@@ -45,8 +45,8 @@ Order.prototype.renderOrderSummaryList = function (containerNode, id) {
     buttonEdit.setAttribute("data-id", id);
 
     var buttonCancel = document.createElement("button");
-    buttonCancel.innerHTML = "Cancel";
-    buttonCancel.role = "random";
+    buttonCancel.innerHTML = "Delete";
+    buttonCancel.role = "danger";
     buttonCancel.id = "buttonSummaryCancel";
     buttonCancel.className = "delete";
     buttonCancel.setAttribute("data-id", id);

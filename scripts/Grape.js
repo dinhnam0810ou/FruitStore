@@ -22,6 +22,8 @@ Grape.prototype.renderProperties = function (labelPropertyNode, containerNode) {
         thiz.colorSelection.appendChild(option);
     });
 
+    if (this.color) this.colorSelection.value = this.color;
+
     containerNode.appendChild(this.colorSelection);
 
     this.colorLabel = document.createElement("label");

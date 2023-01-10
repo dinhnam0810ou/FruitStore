@@ -20,6 +20,8 @@ Apple.prototype.renderProperties = function (labelPropertyNode, containerNode) {
         option.text = sizeType;
         thiz.sizeSelection.appendChild(option);
     });
+    
+    if (this.size) this.sizeSelection.value = this.size;
 
     containerNode.appendChild(this.sizeSelection);
     

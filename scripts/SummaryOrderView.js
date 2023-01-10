@@ -1,6 +1,6 @@
 function SummaryOrderView() {
     this.initializeProperty();
-    this.handleEvent();
+    this.registerEvents();
 }
 
 SummaryOrderView.prototype.initializeProperty = function () {
@@ -10,7 +10,7 @@ SummaryOrderView.prototype.initializeProperty = function () {
     this.orderArray = [];
 };
 
-SummaryOrderView.prototype.handleEvent = function () {
+SummaryOrderView.prototype.registerEvents = function () {
     document.getElementById("inventoryOrderContainer").addEventListener("click", this.handleAction.bind(this));
 
     document.getElementById("buttonInventoryOrder").addEventListener("click", this.addSummaryOrder.bind(this));
@@ -35,7 +35,7 @@ SummaryOrderView.prototype.handleAction = function (e) {
 
     if (deleteButton) {
 
-        var message = confirm("Are you sure about that??");
+        var message = confirm("Do you want to delete this item??");
         if (message == false) return;
 
         var id = deleteButton.dataset.id;
@@ -76,6 +76,7 @@ SummaryOrderView.prototype.editSummaryOrder = function (summaryOrder) {
         summaryOrder.totalItem = savedSummaryItem.totalItem;
         summaryOrder.totalCost = savedSummaryItem.totalCost;
         summaryOrder.fruitArray = savedSummaryItem.fruitArray;
+      
         thiz.renderSummaryOrder();
     });
 

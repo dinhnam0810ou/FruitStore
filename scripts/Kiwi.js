@@ -22,8 +22,10 @@ Kiwi.prototype.renderProperties = function (labelPropertyNode, containerNode) {
         thiz.colorSelection.appendChild(option);
     });
 
-    containerNode.appendChild(this.colorSelection);
+    if (this.freshColor) this.colorSelection.value = this.freshColor;
 
+    containerNode.appendChild(this.colorSelection);
+    
     this.colorLabel = document.createElement("label");
     this.colorLabel.innerHTML = "Fresh Color:";
 

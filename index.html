@@ -3,7 +3,7 @@
 <head>
     <title>JS Example</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
     <hbox class="Blocks">
@@ -54,10 +54,10 @@
                     <label>Cost:</label>
                 </vbox>
                 <vbox class="FruitInput" id="fruitInput">
-                    <select name="fruitType" id="fruitType"></select>
+                    <select name="fruitType" id="fruitTypeSelector"></select>
                     <vbox id="fruitPropertyContainer" class="FruitPropertyContainer"></vbox>
-                    <input id="weight" type="number" value="1"/>
-                    <input id="cost" type="number" value="1"/>
+                    <input id="weight" type="number"/>
+                    <input id="cost" type="number"/>
                 </vbox>
             </hbox>
             <hbox class="ButtonAction ButtonNewInventory">
@@ -68,16 +68,16 @@
     </hbox>
 </body>
 </html>
-<script src="Fruit.js"></script>
-<script src="Apple.js"></script>
-<script src="Grape.js"></script>
-<script src="Kiwi.js"></script>
-<script src="Watermelon.js"></script>
-<script src="App.js"></script>
-<script src="Order.js"></script>
-<script src="SummaryOrderView.js"></script>
-<script src="OrderItemView.js"></script>
-<script src="InventoryOrderView.js"></script>
+<script src="./scripts/Fruit.js"></script>
+<script src="./scripts/Apple.js"></script>
+<script src="./scripts/Grape.js"></script>
+<script src="./scripts/Kiwi.js"></script>
+<script src="./scripts/Watermelon.js"></script>
+<script src="./scripts/App.js"></script>
+<script src="./scripts/Order.js"></script>
+<script src="./scripts/SummaryOrderView.js"></script>
+<script src="./scripts/OrderItemView.js"></script>
+<script src="./scripts/InventoryOrderView.js"></script>
 <script>
    window.addEventListener("load", function () {
         var app = new App();

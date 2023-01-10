@@ -1,6 +1,6 @@
 function InventoryOrderView() {
     this.initializeProperty();
-    this.handleEvent();
+    this.registerEvents();
 }
 
 InventoryOrderView.SUPPLIERS = ["Volvo","FFruit"];
@@ -28,7 +28,7 @@ InventoryOrderView.prototype.initializeProperty = function () {
     this.summaryInformation = document.getElementById("summaryInformation");
 };
 
-InventoryOrderView.prototype.handleEvent = function () {
+InventoryOrderView.prototype.registerEvents = function () {
     var thiz = this;
     this.detailVBox.addEventListener("click", this.handleAction.bind(this));
 
@@ -83,7 +83,7 @@ InventoryOrderView.prototype.handleAction = function (e) {
     var editButton = e.target.closest(".edit");
     if (deleteButton) {
 
-        var message = confirm("Are you sure about that??");
+        var message = confirm("Do you want to delete this item??");
         if (message == false) return;
 
         var id = deleteButton.dataset.id;
@@ -114,8 +114,17 @@ InventoryOrderView.prototype.handleAction = function (e) {
 InventoryOrderView.prototype.editOrderItem = function (orderItem) {
     var thiz = this;
     this.orderItemView.open(orderItem, function (savedItem) {
-        orderItem.weight = savedItem.weight;
-        orderItem.cost = savedItem.cost;
+     
+        for (var i = 0; i < thiz.fruitArray.length; i++) {
+
+            var item = thiz.fruitArray[i];
+
+            if (item.id == orderItem.id) {
+                thiz.fruitArray[i] = savedItem;
+                break;
+            }
+        }
+
         thiz.renderOrderList();
     });
 };
@@ -139,6 +148,7 @@ InventoryOrderView.prototype.renderOrderList = function () {
     this.summaryInformation.innerHTML = "";
     this.counter = 0;
     this.cost = 0;
+    
     if (this.fruitArray.length > 0) {
         this.fruitArray.forEach(function (fruit) {
             

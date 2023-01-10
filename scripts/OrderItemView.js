@@ -1,6 +1,6 @@
 function OrderItemView() {
     this.initializeProperty();
-    this.handleEvent();
+    this.registerEvents();
 }
 
 OrderItemView.FRUIT_TYPE = ["Watermelon", "Kiwi", "Apple", "Grape"];
@@ -10,24 +10,27 @@ OrderItemView.orderItemLastId = 0;
 OrderItemView.prototype.initializeProperty = function () {
     var thiz = this;
 
-    this.fruitType = document.getElementById("fruitType");
+    this.fruitTypeSelector = document.getElementById("fruitTypeSelector");
 
-    OrderItemView.FRUIT_TYPE.forEach(function (fruitType) {
+    OrderItemView.FRUIT_TYPE.forEach(function (fruit) {
         var option = document.createElement("option");
-        option.value = fruitType;
-        option.text = fruitType;
-        thiz.fruitType.appendChild(option);
+        option.value = fruit;
+        option.text = fruit;
+        thiz.fruitTypeSelector.appendChild(option);
     });
 
     this.fruitPropertyNameLabel = document.getElementById("fruitPropertyNameLabel");
     this.fruitPropertyContainer = document.getElementById("fruitPropertyContainer");
-    this.invalidateFruitPropertyView();
+
+    this.weight = document.getElementById("weight");
+    this.cost = document.getElementById("cost");
+
 };
 
-OrderItemView.prototype.handleEvent = function () {
+OrderItemView.prototype.registerEvents = function () {
     var thiz = this;
     
-    this.fruitType.addEventListener("click", this.invalidateFruitPropertyView.bind(this));
+    this.fruitTypeSelector.addEventListener("click", this.invalidateFruitPropertyView.bind(this));
 
     document.getElementById("buttonSaveItem").addEventListener("click", function () {
         thiz.saveFruit();
@@ -41,29 +44,37 @@ OrderItemView.prototype.handleEvent = function () {
 OrderItemView.prototype.open = function (orderItem, callback) {
     this.fruitPropertyContainer.innerHTML = "";
     this.fruitPropertyNameLabel.innerHTML = "";
+    this.fruitTypeSelector.value = OrderItemView.FRUIT_TYPE[0];
+
+    this.weight.value = 1;
+    this.cost.value = 1;
 
     this.callback = callback;
     this.orderItem = orderItem;
-    if (this.orderItem) this.id = this.orderItem.id;
 
-    this.invalidateFruitPropertyView();
+    if (this.orderItem) {
+        this.id = this.orderItem.id;
+        this.fruitTypeSelector.value = this.orderItem.name;
+        this.orderItem.renderProperties(this.fruitPropertyNameLabel, this.fruitPropertyContainer);
+    } else {
+        this.invalidateFruitPropertyView();
+    }
+
     document.getElementById("orderItemBlock").style.visibility = "visible";
 };
 
 OrderItemView.prototype.saveFruit = function () {
-    var weight = document.getElementById("weight").value;
-    var cost = document.getElementById("cost").value;
 
-    if (weight > 0 && cost > 0) {
-        var fruit = new window[this.fruitType.value]().getFruitValue(this.id);
-
+    if (this.weight.value > 0 && this.cost.value > 0) {
+        var fruit = new window[this.fruitTypeSelector.value]().getFruitValue(this.id);
+        
         if (!this.orderItem) {
             OrderItemView.orderItemLastId ++;
             fruit.id = OrderItemView.orderItemLastId;
         }
     
         this.callback(fruit);
-    
+
         document.getElementById("orderItemBlock").style.visibility = "hidden";
     } else {
         alert("Invalid weight or cost");
@@ -74,14 +85,8 @@ OrderItemView.prototype.saveFruit = function () {
 OrderItemView.prototype.invalidateFruitPropertyView = function () {
     this.fruitPropertyContainer.innerHTML = "";
     this.fruitPropertyNameLabel.innerHTML = "";
-    
-    if (this.orderItem) {
-        this.fruitType.value = this.orderItem.name;
-        this.orderItem.renderProperties(this.fruitPropertyNameLabel, this.fruitPropertyContainer);
-        document.getElementById("orderItemBlock").style.visibility = "visible";
-    } else {
-        var fruit = new window[this.fruitType.value]();
-        fruit.renderProperties(this.fruitPropertyNameLabel, this.fruitPropertyContainer);
-    }
+
+    var fruit = new window[this.fruitTypeSelector.value]();
+    fruit.renderProperties(this.fruitPropertyNameLabel, this.fruitPropertyContainer);
 };
 
